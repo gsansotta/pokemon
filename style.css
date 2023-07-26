@@ -1,0 +1,63 @@
+body, form, .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.card{
+    background-color:#18202b;
+    width: 400px;
+    height: 650px;   
+}
+
+.close{
+    color: aliceblue;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+footer{
+    height: 100%;
+    width: 100%;
+    
+}
+
+#historial{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);  
+}
+
+#historial p{
+    display: block;
+    position: relative;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
