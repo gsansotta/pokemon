@@ -49,8 +49,9 @@ function insertarImagenesEnHistorial() {
   mesaje.innerHTML = '';
   let recupero= JSON.parse(localStorage.getItem("pkm") || "[]");
   console.log(recupero);
-  recupero.forEach(imageUrl => {
-    const imagenHTML = `<img src="${imageUrl}" alt="Pokemon">`;
+  recupero.forEach(poke => {
+    const img = poke.img
+    const imagenHTML = `<img src="${img}" alt="Pokemon">`;
     historialDiv.insertAdjacentHTML('beforeend', imagenHTML);
   });  
   
@@ -71,24 +72,25 @@ function fetchPokemonInfo(pokemonName) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(response => response.json())
     .then(data => {
-      let nombre = data.name.toUpperCase()
-      let altura = (data.height)/10
-      let peso = (data.weight)/10
-      let img = data.sprites.other.home.front_default
+      const pokemon ={
+      nombre : data.name.toUpperCase(),
+      altura : (data.height)/10,
+      peso : (data.weight)/10,
+      img : data.sprites.other.home.front_default}
       const pokemonInfo = `
             <div class="card">
             <span class="close" onclick="cerrarModal()" class="cerrar">X</span>
-            <img class="card-img-top" src="${img}" alt="Card image cap">
+            <img class="card-img-top" src="${pokemon.img}" alt="Card image cap">
             <div class="card-body">
-              <h4 class="card-text">Nombre: ${nombre}</h4>
-              <h5 class="card-text">Altura: ${altura} MTS</h5>
-              <h5 class="card-text"> Peso: ${peso} KG</h5>
+              <h4 class="card-text">Nombre: ${pokemon.nombre}</h4>
+              <h5 class="card-text">Altura: ${pokemon.altura} MTS</h5>
+              <h5 class="card-text"> Peso: ${pokemon.peso} KG</h5>
             </div>
           </div>              
             `;
             setTimeout(() => {              
               document.getElementById('pokemon-info').innerHTML = pokemonInfo;
-              pokeHistorial.push(img)
+              pokeHistorial.push(pokemon)
               spinner.style.display = 'none';
               localStorage.setItem("pkm", JSON.stringify(pokeHistorial))
                insertarImagenesEnHistorial() 
