@@ -3,12 +3,27 @@ body, form, .card-body {
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    font-family: system-ui;
+    text-align: center;
 }
+ p, h4{
+  color: rgb(233, 238, 242);
+  font-weight: bold;
+ }
 
 .card{
     background-color:#18202b;
     width: 400px;
-    height: 650px;   
+    height: 500px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top{
+  max-width: 200px;
+  max-height: 250px;
+  
 }
 
 .close{
@@ -19,6 +34,7 @@ body, form, .card-body {
     cursor: pointer;
 }
 
+/* FOOTER &HISTORIAL */
 footer{
     height: 100%;
     width: 100%;
@@ -35,6 +51,13 @@ footer{
     position: relative;
 }
 
+#fotoHistorial{
+  max-width: 100px !important;
+  max-height: 60px !important;
+}
+
+
+/* spinner */
 .lds-dual-ring {
     display: inline-block;
     width: 80px;
