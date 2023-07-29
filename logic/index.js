@@ -1,6 +1,5 @@
 import { btnAceptar, formulario,  pokemon, spinner, pokeHistorial } from './constants.js'
-import { insertarImagenesEnHistorial, bodyModal, abrirModal} from './functions.js';
-import { recuperoLocal } from './localStorage.js';
+import { insertarImagenesEnHistorial, bodyModal, abrirModal, loadHistorial} from './functions.js';
 
 
 function fetchPokemonInfo(pokemonName) {
@@ -18,7 +17,8 @@ function fetchPokemonInfo(pokemonName) {
       setTimeout(() => {
         document.getElementById('pokemon-info').innerHTML = bodyModal(pokemon);
         pokeHistorial.push(pokemon)
-        spinner.style.display = 'none';       
+        spinner.style.display = 'none';  
+        localStorage.setItem("pkm", JSON.stringify(pokeHistorial))     
         insertarImagenesEnHistorial()
       }, "1000");
     })
@@ -54,9 +54,9 @@ function validarCampo() {
 pokemon.addEventListener('input', validarCampo);
 
 
-
-recuperoLocal()
-insertarImagenesEnHistorial()
-
+document.addEventListener('DOMContentLoaded', function() {   
+  loadHistorial ()
+  
+});
 
 

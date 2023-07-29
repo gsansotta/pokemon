@@ -5,4 +5,4 @@ export const pokemon = document.getElementById('pokeInput'),
     historialDiv = document.getElementById('historial'),
     mensaje = document.getElementById('msjBusqueda'),
     spinner = document.getElementById('spinner'),
-    pokeHistorial = []; 
+    pokeHistorial=[]; 

@@ -1,8 +1,15 @@
 import { mensaje, historialDiv, modal, pokeHistorial } from './constants.js'
 
-export function insertarImagenesEnHistorial() {
+export function insertarImagenesEnHistorial() {  
   historialDiv.innerHTML = '';
   mensaje.style.display = 'none'; 
+/*   let recupero= JSON.parse(localStorage.getItem("pkm") || "[]");
+  recupero.forEach(item => {  
+    pokeHistorial.push(item);
+  });  */
+  
+  /* console.log(pokeHistorial); */
+ 
   pokeHistorial.forEach(poke => {
     const img = poke.img
     const imagenHTML = `
@@ -14,10 +21,17 @@ export function insertarImagenesEnHistorial() {
       </div>`;
     historialDiv.insertAdjacentHTML('beforeend', imagenHTML);
   });
-  localStorage.setItem("pkm", JSON.stringify(pokeHistorial))
+ 
 }
 
-
+ export function loadHistorial (){
+  let recupero= JSON.parse(localStorage.getItem("pkm") || "[]");
+  recupero.forEach(item => {  
+    pokeHistorial.push(item);
+  }); 
+  insertarImagenesEnHistorial()
+ }
+ 
 export function bodyModal(pokemon) {
   return `
   <div class="card">
@@ -35,8 +49,7 @@ export function bodyModal(pokemon) {
 
 
 window.limpiarHistorial = function () {
-  pokeHistorial.shift()
-  console.log(pokeHistorial);
+  pokeHistorial.splice(0, pokeHistorial.length) 
   historialDiv.innerHTML = '';
   modal.innerHTML = '';
   mensaje.style.display = 'block';
@@ -53,7 +66,7 @@ export function abrirModal() {
   btnAceptar.disabled = true;
 }
 
-function abrirInfo(id) {
+window.abrirInfo =function (id) {
   const pokemon = pokeHistorial.find(objeto => objeto.id === id)
   console.log(pokemon);
 }
