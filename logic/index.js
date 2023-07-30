@@ -20,7 +20,7 @@ function fetchPokemonInfo(pokemonName) {
         spinner.style.display = 'none';  
         localStorage.setItem("pkm", JSON.stringify(pokeHistorial))     
         insertarImagenesEnHistorial()
-      }, "1000");
+      }, 1000);
     })
     .catch(error => {
       spinner.style.display = 'none'
@@ -28,7 +28,6 @@ function fetchPokemonInfo(pokemonName) {
       alert('Ingreso incorrecto')
     });
 }
-
 
 
 /* TOMA EL VALOR DEL INPUT Y LO PARSEA A MINUSCULA PORQUE LA API ESPERA MINUSUCULAS */

@@ -2,14 +2,7 @@ import { mensaje, historialDiv, modal, pokeHistorial } from './constants.js'
 
 export function insertarImagenesEnHistorial() {  
   historialDiv.innerHTML = '';
-  mensaje.style.display = 'none'; 
-/*   let recupero= JSON.parse(localStorage.getItem("pkm") || "[]");
-  recupero.forEach(item => {  
-    pokeHistorial.push(item);
-  });  */
-  
-  /* console.log(pokeHistorial); */
- 
+  mensaje.style.display = 'none';  
   pokeHistorial.forEach(poke => {
     const img = poke.img
     const imagenHTML = `
