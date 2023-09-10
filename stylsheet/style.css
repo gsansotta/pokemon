@@ -10,6 +10,12 @@ body, form, .card-body {
   color: rgb(233, 238, 242);
   font-weight: bold;
  }
+ main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
 
 .card{
     background-color:#18202b;
@@ -34,13 +40,19 @@ body, form, .card-body {
     cursor: pointer;
 }
 
+
 /* FOOTER &HISTORIAL */
 footer{
     height: 100%;
     width: 100%;
     
 }
-
+.historialContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #historial{
     display: grid;
     grid-template-columns: repeat(8, 1fr);  
@@ -59,9 +71,9 @@ footer{
 
 /* spinner */
 .lds-dual-ring {
-    display: inline-block;
+    display: none;
     width: 80px;
-    height: 80px;
+    height: 80px;   
   }
   .lds-dual-ring:after {
     content: " ";
@@ -83,4 +95,11 @@ footer{
     }
   }
 
+.infoModal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ /*  z-index: 9999; */ /* Asegúrate de que el z-index sea mayor que el del resto del contenido para que esté superpuesto */
 
+}

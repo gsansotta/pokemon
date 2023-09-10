@@ -1,5 +1,5 @@
 import { btnAceptar, formulario,  pokemon, spinner, pokeHistorial } from './constants.js'
-import { insertarImagenesEnHistorial, bodyModal, abrirModal, loadHistorial} from './functions.js';
+import { abrirModal, loadHistorial, generoCard} from './functions.js';
 
 
 function fetchPokemonInfo(pokemonName) {
@@ -7,20 +7,7 @@ function fetchPokemonInfo(pokemonName) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then(response => response.json())
     .then(data => {
-      const pokemon = {
-        id: data.id,
-        nombre: data.name.toUpperCase(),
-        altura: (data.height) / 10,
-        peso: (data.weight) / 10,
-        img: data.sprites.other.dream_world.front_default || data.sprites.other.home.front_default
-      };
-      setTimeout(() => {
-        document.getElementById('pokemon-info').innerHTML = bodyModal(pokemon);
-        pokeHistorial.push(pokemon)
-        spinner.style.display = 'none';  
-        localStorage.setItem("pkm", JSON.stringify(pokeHistorial))     
-        insertarImagenesEnHistorial()
-      }, 1000);
+      generoCard(data)
     })
     .catch(error => {
       spinner.style.display = 'none'
@@ -54,8 +41,7 @@ pokemon.addEventListener('input', validarCampo);
 
 
 document.addEventListener('DOMContentLoaded', function() {   
-  loadHistorial ()
-  
+  loadHistorial ()  
 });
 
 
